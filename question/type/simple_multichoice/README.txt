@@ -21,3 +21,7 @@
 // made in order to customize "multichoice" plugin by creating an alike plugin with
 // less options.
 //
+Installation Guide - 
+1. Move the contents to your .../moodle/questions/type/ directory
+2. Open your moodle with admin priviledged account.
+3. Install the plugin
