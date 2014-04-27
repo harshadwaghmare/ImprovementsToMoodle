@@ -15,8 +15,51 @@ $PAGE->set_heading(get_string('staticmanagecat'));
 echo $OUTPUT->header();
 
 foreach ($cat as $category) {
+    //making strategy for more than one selects
+    //moveid
+    $strmoveid = 'cmove'.$category->id;
+    $mcat = optional_param($strmoveid, 0, PARAM_INT);
+    //hideid
+    $strhidcatparam = 'chid'.$category->id;
+    $hidecatparam = optional_param($strhidcatparam, 0, PARAM_INT);
+    //deleteid
     $strdeletecat = 'cdel'.$category->id;
     $deletecat = optional_param($strdeletecat, 0, PARAM_INT);
+    //checking condition
+    if (($mcat != 0 and $hidecatparam != 0 and $deletecat != 0)
+        or ($mcat != 0 and $hidecatparam != 0)
+        or ($mcat != 0 and $deletecat != 0)
+        or ($hidecatparam != 0 and $deletecat != 0)) {
+        echo $OUTPUT->heading($category->name);
+        echo $OUTPUT->notification(get_string('multipleselected'), 'notifyproblem');
+        continue;
+    }
+    //hide category starts
+    if ($hidecatparam !== 0) {
+        if ($category->visible == 1) {
+            $hidecat = $category->id;
+            $showcat = 0;
+        }
+        else {
+            $showcat = $category->id;
+            $hidecat = 0;
+        }
+        echo $OUTPUT->heading($category->name);
+        if ($hidecat and confirm_sesskey()) {
+            $cattohide = coursecat::get($hidecat);
+            require_capability('moodle/category:manage', get_category_or_system_context($cattohide->parent));
+            $cattohide->hide();
+            echo $OUTPUT->notification(get_string('hidecat', '', $category->name), 'notifysuccess');
+        } else if ($showcat and confirm_sesskey()) {
+            $cattoshow = coursecat::get($showcat);
+            require_capability('moodle/category:manage', get_category_or_system_context($cattoshow->parent));
+            $cattoshow->show();
+            echo $OUTPUT->notification(get_string('showcat', '', $category->name), 'notifysuccess');
+        }
+    }
+//end hide category
+
+
     if (($deletecat !== 0) and confirm_sesskey()) {
         // Delete a category.
         $cattodelete = coursecat::get($category->id);
@@ -49,36 +92,9 @@ foreach ($cat as $category) {
         }
     }
 //end delete category
-//hide category starts
-    $strhidcatparam = 'chid'.$category->id;
-    $hidecatparam = optional_param($strhidcatparam, 0, PARAM_INT);
-    if ($hidecatparam !== 0) {
-        if ($category->visible == 1) {
-            $hidecat = $category->id;
-            $showcat = 0;
-        }
-        else {
-            $showcat = $category->id;
-            $hidecat = 0;
-        }
-        echo $OUTPUT->heading($category->name);
-        if ($hidecat and confirm_sesskey()) {
-            $cattohide = coursecat::get($hidecat);
-            require_capability('moodle/category:manage', get_category_or_system_context($cattohide->parent));
-            $cattohide->hide();
-            echo $OUTPUT->notification(get_string('hidecat', '', $category->name), 'notifysuccess');
-        } else if ($showcat and confirm_sesskey()) {
-            $cattoshow = coursecat::get($showcat);
-            require_capability('moodle/category:manage', get_category_or_system_context($cattoshow->parent));
-            $cattoshow->show();
-            echo $OUTPUT->notification(get_string('showcat', '', $category->name), 'notifysuccess');
-        }
-    }
-//end hide category
-
 //move category start
-    $strmoveid = 'cmove'.$category->id;
-    $mcat = optional_param($strmoveid, 0, PARAM_INT);
+
+
     if ($mcat !== 0) {
         $movecat = $category->id;
         $movetocat = optional_param('movetocat'.$category->id, -1, PARAM_INT);
