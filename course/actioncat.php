@@ -31,7 +31,7 @@ foreach ($cat as $category) {
         or ($mcat != 0 and $deletecat != 0)
         or ($hidecatparam != 0 and $deletecat != 0)) {
         echo $OUTPUT->heading($category->name);
-        echo $OUTPUT->notification(get_string('multipleselected'), 'notifyproblem');
+        echo $OUTPUT->notification(get_string('multiplechecked'), 'notifyproblem');
         continue;
     }
     //hide category starts

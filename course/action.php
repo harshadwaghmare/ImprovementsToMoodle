@@ -21,6 +21,16 @@ if ($courses = get_courses($categoryid, '', 'c.id,c.shortname,c.fullname,c.visib
         //delete bulk
         $strcid = 'did'.$course->id;
         $dcourseid = optional_param($strcid, 0, PARAM_INT);
+
+        $strhid = 'hid'.$course->id;
+        $hcourseid = optional_param($strhid, 0, PARAM_INT);
+
+        if($dcourseid != 0 and $hcourseid != 0) {
+            $flag = 1;
+            echo $OUTPUT->heading($course->fullname);
+            echo $OUTPUT->notification(get_string('multiplechecked'), 'notifyproblem');
+            continue;
+        }
         if ($dcourseid !== 0) {
             $flag = 1;
             if (!can_delete_course($course->id)) {
@@ -36,8 +46,6 @@ if ($courses = get_courses($categoryid, '', 'c.id,c.shortname,c.fullname,c.visib
             fix_course_sortorder();
         } 
         //hide/show bulk
-        $strhid = 'hid'.$course->id;
-        $hcourseid = optional_param($strhid, 0, PARAM_INT);
         if ($hcourseid !== 0) {
             $flag = 1;
             //hide/show
