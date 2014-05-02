@@ -18,3 +18,6 @@ Installation Guide of these files.
 1. Simply move these files to .../moodle/course/ directory and access the smanage.php directly from url field.
 2. If the patch from course/index.php is applied, then the smanage.php can also be accessed from clicking a button on the course/index.php page.
 3. Rest is self explanatory.
+
+Important note:
+A patch file is uploaded, so apply the patch for moodle.php, with the command like $ patch -p1 < patchfile.diff, read more about applying a patch at http://docs.moodle.org/dev/How_to_apply_a_patch#Apply_a_Patch_in_Linux_using_.22patch.22

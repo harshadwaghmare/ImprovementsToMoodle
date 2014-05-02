@@ -1,0 +1,95 @@
+--- moodle.php	2014-05-02 18:10:01.975983286 +0530
++++ /var/www/moodle/lang/en/moodle.php	2014-04-28 02:34:38.417038632 +0530
+@@ -207,12 +207,15 @@
+ $string['blocksetup'] = 'Setting up block tables';
+ $string['blocksuccess'] = '{$a} tables have been set up correctly';
+ $string['brief'] = 'Brief';
++$string['bulkactionsacategory'] = 'Bulk Actions over Category';
+ $string['bycourseorder'] = 'By course order';
+ $string['byname'] = 'by {$a}';
+ $string['bypassed'] = 'Bypassed';
+ $string['cachecontrols'] = 'Cache controls';
+ $string['cancel'] = 'Cancel';
+ $string['cancelled'] = 'Cancelled';
++$string['cannotmovecategory'] = 'Move Category Failure';
++$string['cannotdeletecategory'] = 'Delete Category Failure';
+ $string['categories'] = 'Course categories';
+ $string['category'] = 'Category';
+ $string['categoryadded'] = 'The category \'{$a}\' was added';
+@@ -221,6 +224,7 @@
+ $string['categorydeleted'] = 'The category \'{$a}\' was deleted';
+ $string['categoryduplicate'] = 'A category named \'{$a}\' already exists!';
+ $string['categorymodifiedcancel'] = 'Category was modified! Please cancel and try again.';
++$string['categorymoved'] = 'Category moved successfully';
+ $string['categoryname'] = 'Category name';
+ $string['idnumbercoursecategory'] = 'Category ID number';
+ $string['idnumbercoursecategory_help'] = 'The ID number of a course category  is only used when matching the category against external systems and is not displayed anywhere on the site. If the category has an official code name it may be entered, otherwise the field can be left blank.';
+@@ -321,6 +325,7 @@
+ $string['coursehelpnewsitemsnumber'] = 'Number of recent items from the news forum appearing in the latest news block on the course page. If set to zero, the latest news block will not be displayed.';
+ $string['coursehelpnumberweeks'] = 'Number of sections in the course (applies to certain course formats only).';
+ $string['coursehelpshowgrades'] = 'Enable the display of the gradebook. It does not prevent grades from being displayed within the individual activities.';
++$string['coursehide'] = 'Course successfully hidden';
+ $string['coursehidden'] = 'This course is currently unavailable to students';
+ $string['courseoverviewfiles'] = 'Course summary files';
+ $string['courseoverviewfilesext'] = 'Course summary files extensions';
+@@ -329,6 +334,7 @@
+ $string['courseinfo'] = 'Course info';
+ $string['coursemessage'] = 'Message course users';
+ $string['coursenotaccessible'] = 'This course does not allow public access';
++$string['coursenotselected'] = 'No course was Selected';
+ $string['courselegacyfiles'] = 'Legacy course files';
+ $string['courselegacyfiles_help'] = 'The course files area provides some backward compatibility with Moodle 1.9 and earlier.  All files in this area are always accessible to all participants in the course (whether you link to them or not) and there is no way to know where any of these files are being used in Moodle.
+ 
+@@ -360,6 +366,7 @@
+ $string['courses'] = 'Courses';
+ $string['coursesectionsummaries'] = 'Course section summaries';
+ $string['coursesettings'] = 'Course default settings';
++$string['courseshown'] = 'Course successfully shown';
+ $string['coursesmovedout'] = 'Courses moved out from {$a}';
+ $string['coursespending'] = 'Courses pending approval';
+ $string['coursestart'] = 'Course start';
+@@ -453,6 +460,8 @@
+ $string['deletecheckfiles'] = 'Are you absolutely sure you want to delete these files?';
+ $string['deletecheckfull'] = 'Are you absolutely sure you want to completely delete {$a} ?';
+ $string['deletecheckwarning'] = 'You are about to delete these files';
++$string['deletecourse'] = 'Delete Course';
++$string['deletecourses'] = 'Delete Courses';
+ $string['deletelogs'] = 'Delete logs';
+ $string['deleteselected'] = 'Delete selected';
+ $string['deleteselectedkey'] = 'Delete selected key';
+@@ -485,6 +494,7 @@
+ $string['dndworkingtext'] = 'Drag and drop text onto course sections to upload it';
+ $string['dndworkinglink'] = 'Drag and drop links onto course sections to upload them';
+ $string['documentation'] = 'Moodle documentation';
++$string['doit'] = 'Do it!!!';
+ $string['down'] = 'Down';
+ $string['download'] = 'Download';
+ $string['downloadall'] = 'Download all';
+@@ -814,6 +824,9 @@
+ $string['hiddensectionscollapsed'] = 'Hidden sections are shown in collapsed form';
+ $string['hiddensectionsinvisible'] = 'Hidden sections are completely invisible';
+ $string['hide'] = 'Hide';
++$string['hidecat'] = 'Category hidden successfully';
++$string['showcat'] = 'Category shown successfully';
++$string['hide/show'] = 'Hide/show';
+ $string['hideadvancedsettings'] = 'Hide advanced settings';
+ $string['hidepicture'] = 'Hide picture';
+ $string['hidesection'] = 'Hide section {$a}';
+@@ -1091,6 +1104,7 @@
+ $string['movetoanotherfolder'] = 'Move to another folder';
+ $string['moveup'] = 'Move up';
+ $string['msnid'] = 'MSN ID';
++$string['multiplechecked'] = 'Multiple actions are checked, No Action taken over!!!';
+ $string['mustconfirm'] = 'You need to confirm your login';
+ $string['mustchangepassword'] = 'The new password must be different than the current one';
+ $string['mycourses'] = 'My courses';
+@@ -1592,6 +1606,9 @@
+ $string['startingfrom'] = 'Starting from';
+ $string['startsignup'] = 'Create new account';
+ $string['state'] = 'State/Province';
++$string['staticops'] = 'Static Operations';
++$string['staticmanage'] = 'Static Manage Courses';
++$string['staticmanagecat'] = 'Static Manage Categories';
+ $string['statistics'] = 'Statistics';
+ $string['statisticsgraph'] = 'Statistics graph';
+ $string['stats'] = 'Statistics';
