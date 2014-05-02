@@ -1,0 +1,17 @@
+--- /home/pankaj/Academics/moodle/moodle_2.5/moodle4/lang/en/moodle.php	2013-05-14 14:57:22.000000000 +0530
++++ /var/www/moodle2/lang/en/moodle.php	2014-05-01 13:45:05.465591703 +0530
+@@ -1861,3 +1861,14 @@
+ $string['yourteacher'] = 'your {$a}';
+ $string['yourwordforx'] = 'Your word for \'{$a}\'';
+ $string['zippingbackup'] = 'Zipping backup';
++
++$string['grade_report'] = 'My Grade Report';
++$string['studentname'] = 'Student Name';
++$string['evensem'] = 'Even Semester ';
++$string['oddsem'] = 'Odd Semester ';
++$string['my_courses'] = 'My Courses';
++$string['course_names'] = 'Course Name';
++$string['marks'] = 'Marks';
++$string['sem'] = 'Semester';
++$string['sem_start'] = 'Start Date';
++$string['sem_end'] = 'End Date';
