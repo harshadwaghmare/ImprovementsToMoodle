@@ -45,12 +45,12 @@ abstract class qtype_simple_multichoice_base extends question_graded_automatical
     public $answernumbering;
     public $layout = self::LAYOUT_VERTICAL;
 
-/*    public $correctfeedback;
+    public $correctfeedback;
     public $correctfeedbackformat;
     public $partiallycorrectfeedback;
     public $partiallycorrectfeedbackformat;
     public $incorrectfeedback;
-    public $incorrectfeedbackformat; */
+    public $incorrectfeedbackformat; 
 
     protected $order = null;
 

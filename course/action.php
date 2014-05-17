@@ -9,7 +9,8 @@ $PAGE->set_context(context_system::instance());
 require_login();
 
 $category = $DB->get_record("course_categories", array("id"=>$categoryid));
-$categoryname = format_string($category->name, true, array('context' => context_coursecat::instance($categoryid)));
+$categoryname = format_string($category->name, true,
+                              array('context' => context_coursecat::instance($categoryid)));
 
 $PAGE->set_title("Bulk Action over selected courses");
 $PAGE->set_heading($categoryname);
