@@ -1098,9 +1098,6 @@ class grade_report_grader extends grade_report {
 		// Assignments submission's file/s links in grade table 
 		if($grade->grade_item->itemmodule == 'assign') {
 		  require_once($CFG->dirroot.'/mod/assign/locallib.php');
-		  require_once($CFG->libdir.'/weblib.php');
-		  require_once($CFG->dirroot.'/mod/assignment/lib.php');
-		  require_once($CFG->libdir.'/filelib.php');
 		  $cm = get_coursemodule_from_instance('assign', $grade->grade_item->iteminstance, $grade->grade_item->courseid);
 		  if($cm) {
 		    $context = context_module::instance($cm->id);
@@ -1108,21 +1105,23 @@ class grade_report_grader extends grade_report {
 		    $submission = $assignment->get_user_submission($userid, FALSE);
 		    $fs = get_file_storage();
 		    if($submission) {
-		      $files = $fs->get_area_files($context->id, 'assignsubmission_file', 'submission_files', $submission->id);
+		      $files = $fs->get_area_files($context->id, 'assignsubmission_file', 'submission_files', $submission->id);//
 		      foreach($files as $file) {
-			$filelink = moodle_url::make_pluginfile_url($context->id, 
-								    $file->get_component(), 
-								    $file->get_filearea(), 
-								    $submission->id, 
-								    $file->get_filepath(), 
-								    $file->get_filename(), true);
-			$filename = $file->get_filename();
-			if(textlib::strlen($filename) > 12) {
-			  $filename = textlib::substr($filename, 0, 8);
-			  $filename = $filename . "...";
+			if($file->get_filename() != "."){
+			  $filelink = moodle_url::make_pluginfile_url($context->id, 
+								      $file->get_component(), 
+								      $file->get_filearea(), 
+								      $submission->id, 
+								      $file->get_filepath(), 
+								      $file->get_filename(), true);
+			  $filename = $file->get_filename();
+			  if(textlib::strlen($filename) > 12) {
+			    $filename = textlib::substr($filename, 0, 8);
+			    $filename = $filename . "...";
+			  }
+			  $filelink = "<a href=\"$filelink\"</a> $filename";
+			  $itemcell->text .= html_writer::tag("dd", $filelink);
 			}
-			$filelink = "<a href=\"$filelink\"</a> $filename";
-			$itemcell->text .= html_writer::tag("dd", $filelink);
 		      }
 		    }
 		  }
@@ -1809,6 +1808,9 @@ class grade_report_grader extends grade_report {
         }
 
         return $studentsperpage;
+    }
+    public function get_files_for_assignments_row($rows=array()){
+      
     }
 }
 
